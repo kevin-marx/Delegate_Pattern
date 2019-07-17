@@ -25,10 +25,26 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
         let replacementTextHasDecimalSeparator = string.range(of: ".")
 
+        // Check input against character whitelist
         let legalChars = NSCharacterSet(charactersIn: "1234567890.\\b+-")
-        if string.rangeOfCharacter(from: legalChars.inverted) != nil {
+        let charTest = string.rangeOfCharacter(from: legalChars.inverted)
+        if charTest != nil {
             return false
         }
+        
+        // Prevent multiple +, -, or .
+        let puncChars = NSCharacterSet(charactersIn: "1234567890.\\b+-")
+        let puncTest = string.rangeOfCharacter(from: puncChars.inverted)
+        if let text = textField.text {
+            if puncTest == nil {
+                if text.contains(string) {
+                    return false
+                }
+            }
+        }
+
+        
+        
         
         if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
             return false
