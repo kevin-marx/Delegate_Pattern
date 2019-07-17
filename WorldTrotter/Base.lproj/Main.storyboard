@@ -53,9 +53,14 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="fahrenheitFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Rp8-1C-mpC"/>
-                                    <action selector="textFieldDidBeginEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="UPD-mT-zs2"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="80R-Kt-Ga7"/>
                                 </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1VA-Ml-2bL">
+                                <rect key="frame" x="159" y="567" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.95686274510000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -79,6 +84,7 @@
                     </view>
                     <connections>
                         <outlet property="celsiusLabel" destination="XU5-kP-97a" id="d0M-9Z-nbJ"/>
+                        <outlet property="jank" destination="1VA-Ml-2bL" id="0x0-fO-Szh"/>
                         <outlet property="textField" destination="nEB-A3-sAJ" id="Rex-iT-f5z"/>
                     </connections>
                 </viewController>
