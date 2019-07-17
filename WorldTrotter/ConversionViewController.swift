@@ -4,7 +4,7 @@
 
 import UIKit
     // TODO: Mark the ViewController as conforming to the UITextFieldDelegate Protocol
-class ConversionViewController: UIViewController{ //, UITextFieldDelegate {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var celsiusLabel: UILabel!
     @IBOutlet var textField: UITextField!
@@ -22,15 +22,20 @@ class ConversionViewController: UIViewController{ //, UITextFieldDelegate {
     // TODO: Modify code to reject (return false) if it finds any letters in the replacement string
     //  (hint-use Documentation to find a NSCharacterSet collection for letters, and a String method that finds a range using a NSCharacterSet)
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
         let replacementTextHasDecimalSeparator = string.range(of: ".")
+
+        let legalChars = NSCharacterSet(charactersIn: "1234567890.\\b+-")
+        if string.rangeOfCharacter(from: legalChars.inverted) != nil {
+            return false
+        }
         
         if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
             return false
         } else {
             return true
         }
+        
     }
     // DELEGATE METHOD : textFieldDidBeginEditing - is called when the user selects the text field
     // TODO: Add and modify the method to build expectation for the output by changing the celsiusLabel when the input field is selected
